@@ -1,10 +1,8 @@
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/oreus-initiative/split.backend/tree/main/assets/banner.png">
-    <img src="https://github.com/oreus-initiative/split.backend/tree/main/assets/banner.png" alt="Logo">
+  <a href="https://www.oreus.ca/vectors/oreus_brand.svg">
+    <img src="https://www.oreus.ca/vectors/oreus_brand.svg" alt="Logo">
   </a>
 
   <h3 align="center">Oreus's Split Backend</h3>
@@ -22,7 +20,6 @@
     <a href="https://github.com/oreus-initiative/split.backend/issues">Request Feature</a>
   </p>
 </div>
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -50,7 +47,6 @@
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
 
 
 <!-- ABOUT THE PROJECT -->
@@ -95,14 +91,19 @@ Once prerequisites are met, you can setup your development environment;
 3. Create your environment file `.env` at the project's root.
 
 ```js
-    # GLOBAL SETTINGS
-    SALT_ROUNDS=YOUR_SALT_ROUNDS        # Suggested: 10
-    JWT_SECRET_KEY=YOUR_SECRET_KEY      # Generate using `node -e "console.log(require('crypto').randomBytes(256).toString('base64'))"`
+    # SETUP DEVELOPMENT / PRODUCTION ENVIRONMENT
+    NODE_ENV=development                # development, test or production
+    DEBUG_LEVEL=debug                   # See winston logging levels
 
-    # Establishes Database Connection
+    API_KEY=GENERATED_API_KEY           # You can use the generate-api-key command
+
+    # DATABASE CONNECTION
+    DB_CLIENT=YOUR_DATABASE_CLIENT      # Default: pg
+    DB_HOST=YOUR_DATABASE_HOST          # Default: 127.0.0.1
+    DB_PORT=YOUR_DATABASE_PORT          # Default: 5433
     DB_USER=YOUR_DATABASE_USER          # Default: postgres
     DB_PASSWORD=YOUR_DATABASE_PASSWORD  # Default: postgres
-    DB_NAME=YOUR_DATABASE_NAME          # Suggested: "oreus-split"
+    DB_NAME=YOUR_DATABASE_NAME          # Suggested: "oreus-split-api"
 ```
 
 At the root of the project, we also provide the insomnia_apidoc.json file, that can be imported into the Insomnia HTTP Client to better understand and test the API.
