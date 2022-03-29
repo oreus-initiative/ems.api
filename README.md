@@ -5,7 +5,7 @@
     <img src="https://www.oreus.ca/vectors/oreus_brand.svg" alt="Logo">
   </a>
 
-  <h3 align="center">Oreus's Split Backend</h3>
+  <h3 align="center">Oreus's Split API</h3>
 
   <p align="center">
     An EOS-Based User Reward and Ethical Monetisation System.
@@ -15,9 +15,9 @@
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a> 
     · -->
-    <a href="https://github.com/oreus-initiative/split.backend/issues">Report Bug</a>
+    <a href="https://github.com/oreus-initiative/split.api/issues">Report Bug</a>
     ·
-    <a href="https://github.com/oreus-initiative/split.backend/issues">Request Feature</a>
+    <a href="https://github.com/oreus-initiative/split.api/issues">Request Feature</a>
   </p>
 </div>
 
@@ -82,7 +82,7 @@ Once prerequisites are met, you can setup your development environment;
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/oreus-initiative/split.backend
+   git clone https://github.com/oreus-initiative/split.api
    ```
 2. Install Dependencies
    ```sh
@@ -148,7 +148,7 @@ Distributed under the GNUv3 License. See `LICENSE` for more information.
 
 Dominic Fournier - [@DominicF96](https://twitter.com/DominicF96) - me@dominicfournier.com
 
-Project Link: [https://github.com/oreus-initiative/split.backend/projects/1](https://github.com/oreus-initiative/split.backend/projects/1)
+Project Link: [https://github.com/oreus-initiative/split.api/projects/1](https://github.com/oreus-initiative/split.api/projects/1)
 
 
 <!-- ACKNOWLEDGMENTS -->
