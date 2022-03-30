@@ -1,5 +1,6 @@
 module.exports = class ApiError {
-  constructor(code, message, stack = undefined) {
+  constructor(code, method, message, stack = undefined) {
+    this.method = method;
     this.code = code;
     this.message = message;
     this.stack = stack;
@@ -16,8 +17,8 @@ module.exports = class ApiError {
    * @param {string} message Verbose error
    * @param {string} stack Error stack trace
    */
-  static badRequest(message, stack = undefined) {
-    return new ApiError(400, message, stack);
+  static badRequest(method, message, stack = undefined) {
+    return new ApiError(400, method, message, stack);
   }
 
   /**
@@ -27,8 +28,8 @@ module.exports = class ApiError {
    * @param {string} message Verbose error
    * @param {string} stack Error stack trace
    */
-  static unauthorized(message, stack = undefined) {
-    return new ApiError(401, message, stack);
+  static unauthorized(method, message, stack = undefined) {
+    return new ApiError(401, method, message, stack);
   }
 
   /**
@@ -38,8 +39,8 @@ module.exports = class ApiError {
    * @param {string} message Verbose error
    * @param {string} stack Error stack trace
    */
-  static forbidden(message, stack = undefined) {
-    return new ApiError(403, message, stack);
+  static forbidden(method, message, stack = undefined) {
+    return new ApiError(403, method, message, stack);
   }
 
   /**
@@ -49,8 +50,8 @@ module.exports = class ApiError {
    * @param {string} message Verbose error
    * @param {string} stack Error stack trace
    */
-  static notFound(message, stack = undefined) {
-    return new ApiError(404, message, stack);
+  static notFound(method, message, stack = undefined) {
+    return new ApiError(404, method, message, stack);
   }
 
   /**
@@ -60,8 +61,8 @@ module.exports = class ApiError {
    * @param {string} message Verbose error
    * @param {string} stack Error stack trace
    */
-  static conflict(message, stack = undefined) {
-    return new ApiError(409, message, stack);
+  static conflict(method, message, stack = undefined) {
+    return new ApiError(409, method, message, stack);
   }
 
   /**
@@ -71,8 +72,8 @@ module.exports = class ApiError {
    * @param {string} message Verbose error
    * @param {string} stack Error stack trace
    */
-  static gone(message, stack = undefined) {
-    return new ApiError(410, message, stack);
+  static gone(method, message, stack = undefined) {
+    return new ApiError(410, method, message, stack);
   }
 
   // *********************************************************************** //
@@ -86,8 +87,8 @@ module.exports = class ApiError {
    * @param {string} message Verbose error
    * @param {string} stack Error stack trace
    */
-  static internal(stack = undefined) {
-    return new ApiError(500, 'An Internal Error Occured.', stack);
+  static internal(method, stack = undefined) {
+    return new ApiError(500, method, 'An Internal Error Occured.', stack);
   }
 
   /**
@@ -97,8 +98,8 @@ module.exports = class ApiError {
    * @param {string} message Verbose error
    * @param {string} stack Error stack trace
    */
-  static notImplemented(stack = undefined) {
-    return new ApiError(501, 'Not Implemented.', stack);
+  static notImplemented(method, stack = undefined) {
+    return new ApiError(501, method, 'Not Implemented.', stack);
   }
 
   /**
@@ -108,7 +109,7 @@ module.exports = class ApiError {
    * @param {string} message Verbose error
    * @param {string} stack Error stack trace
    */
-  static serviceUnavailable(stack = undefined) {
-    return new ApiError(503, 'Service Unavailable.', stack);
+  static serviceUnavailable(method, stack = undefined) {
+    return new ApiError(503, method, 'Service Unavailable.', stack);
   }
 };

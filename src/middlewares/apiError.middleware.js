@@ -3,7 +3,7 @@ const ApiError = require('../utils/apiError');
 
 const apiErrorHandler = (err, req, res, next) => {
   if (err instanceof ApiError) {
-    logger.error(`[E${err.code}] ${err.message}${err.stack ? `, >>>>> ${err.stack}` : ''}`);
+    logger.error(`[E${err.code}] ${err.method} > ${err.message}${err.stack ? ` >>>>> ${err.stack}` : ''}`);
     res.status(err.code).json({
       code: err.code,
       msg: err.message,

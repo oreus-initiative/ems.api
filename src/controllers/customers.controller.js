@@ -1,9 +1,12 @@
 const logger = require('../utils/logger');
 const customerService = require('../services/customers.service');
+const ApiError = require('../utils/apiError');
+const http = require('../utils/httpMethods');
 
 const create = (req, res, next) => {
-  customerService.create(req.body).then((result) => {
-    logger.info(`POST > Customer(s) '${result}' created.`);
+  const data = req.body;
+  customerService.create(data).then((result) => {
+    logger.info(`${http.POST} > Customer(s) '${result}' created.`);
     res.status(200).json({
       code: 200,
       msg: 'Successfully created customer(s).',
@@ -15,35 +18,61 @@ const create = (req, res, next) => {
 };
 
 const update = (req, res, next) => {
-  logger.info('A Request to update a customer has been made.');
-  res.status(501).json({
-    code: 501,
-    msg: 'Not implemented',
+  const { id } = req.params;
+  if (!id) next(ApiError.badRequest(http.PUT, 'Please provide a customer ID.'));
+  const data = req.body;
+  customerService.update(id, data).then(() => {
+    logger.info(`${http.PUT} > Customer '${req.params.id}' updated.`);
+    res.status(200).json({
+      code: 200,
+      msg: 'Successfully updated customer.',
+    });
+  }).catch((err) => {
+    next(err);
   });
 };
 
 const del = (req, res, next) => {
-  logger.info('A Request to delete a customer has been made.');
-  res.status(501).json({
-    code: 501,
-    msg: 'Not implemented',
+  const { id } = req.params;
+  if (!id) next(ApiError.badRequest(http.DELETE, 'Please provide a customer ID.'));
+  customerService.del(id).then(() => {
+    logger.info(`${http.DELETE} > Customer '${req.params.id}' deleted.`);
+    res.status(200).json({
+      code: 200,
+      msg: 'Successfully deleted customer.',
+    });
+  }).catch((err) => {
+    next(err);
   });
 };
 
 const read = (req, res, next) => {
-  customerService.get(req.params.id).then((result) => {
-    logger.info(`GET > Customer '${req.params.id}' resolved.`);
-    res.status(200).json(result);
+  const { id } = req.params;
+  if (!id) next(ApiError.badRequest(http.GET, 'Please provide a customer ID.'));
+
+  customerService.read(id).then((result) => {
+    logger.info(`${http.GET} > Customer '${req.params.id}' retrieved.`);
+    res.status(200).json({
+      code: 200,
+      msg: 'Successfully retrieved customer.',
+      result,
+    });
   }).catch((err) => {
     next(err);
   });
 };
 
 const readAll = (req, res, next) => {
-  logger.info('A Request to get all customers has been made.');
-  res.status(501).json({
-    code: 501,
-    msg: 'Not implemented',
+  const { page } = req.query;
+  customerService.readAll(page || 0).then((result) => {
+    logger.info(`${http.GET} > Customers page ${page || 0} retrieved.`);
+    res.status(200).json({
+      code: 200,
+      msg: `Successfully retrieved customers (page ${page || 0}).`,
+      result,
+    });
+  }).catch((err) => {
+    next(err);
   });
 };
 

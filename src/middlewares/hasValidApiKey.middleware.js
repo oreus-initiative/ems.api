@@ -8,7 +8,7 @@ const hasValidApiKey = (req, res, next) => {
     next();
   } else {
     logger.info(`An authorized request from '${req.socket.remoteAddress}' has been blocked.`);
-    next(ApiError.unauthorized('No API Key provided.'));
+    next(ApiError.unauthorized(req.method, 'No API Key provided.'));
   }
 };
 
