@@ -1,14 +1,20 @@
 const logger = require('../utils/logger');
+const customerService = require('../services/customers.service');
 
-const add = (req,res,next) => {
-  logger.info('A Request to add a customer has been made.');
-  res.status(501).json({
-    code: 501,
-    msg: 'Not implemented',
+const create = (req, res, next) => {
+  customerService.create(req.body).then((result) => {
+    logger.info(`POST > Customer(s) '${result}' created.`);
+    res.status(200).json({
+      code: 200,
+      msg: 'Successfully created customer(s).',
+      result,
+    });
+  }).catch((err) => {
+    next(err);
   });
 };
 
-const update = (req,res,next) => {
+const update = (req, res, next) => {
   logger.info('A Request to update a customer has been made.');
   res.status(501).json({
     code: 501,
@@ -16,7 +22,7 @@ const update = (req,res,next) => {
   });
 };
 
-const del = (req,res,next) => {
+const del = (req, res, next) => {
   logger.info('A Request to delete a customer has been made.');
   res.status(501).json({
     code: 501,
@@ -24,15 +30,16 @@ const del = (req,res,next) => {
   });
 };
 
-const get = (req,res,next) => {
-  logger.info('A Request to get a customer has been made.');
-  res.status(501).json({
-    code: 501,
-    msg: 'Not implemented',
+const read = (req, res, next) => {
+  customerService.get(req.params.id).then((result) => {
+    logger.info(`GET > Customer '${req.params.id}' resolved.`);
+    res.status(200).json(result);
+  }).catch((err) => {
+    next(err);
   });
 };
 
-const getAll = (req,res,next) => {
+const readAll = (req, res, next) => {
   logger.info('A Request to get all customers has been made.');
   res.status(501).json({
     code: 501,
@@ -41,9 +48,9 @@ const getAll = (req,res,next) => {
 };
 
 module.exports = {
-  add,
+  create,
   update,
   del,
-  get,
-  getAll,
+  read,
+  readAll,
 };

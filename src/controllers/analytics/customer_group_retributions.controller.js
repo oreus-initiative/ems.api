@@ -1,6 +1,6 @@
 const logger = require('../../utils/logger');
 
-const add = (req,res,next) => {
+const create = (req, res, next) => {
   logger.info('A Request to add a customer group retribution has been made.');
   res.status(501).json({
     code: 501,
@@ -8,7 +8,7 @@ const add = (req,res,next) => {
   });
 };
 
-const update = (req,res,next) => {
+const update = (req, res, next) => {
   logger.info('A Request to update a customer group retribution has been made.');
   res.status(501).json({
     code: 501,
@@ -16,7 +16,7 @@ const update = (req,res,next) => {
   });
 };
 
-const del = (req,res,next) => {
+const del = (req, res, next) => {
   logger.info('A Request to delete a customer group retribution has been made.');
   res.status(501).json({
     code: 501,
@@ -24,7 +24,7 @@ const del = (req,res,next) => {
   });
 };
 
-const get = (req,res,next) => {
+const read = (req, res, next) => {
   logger.info('A Request to get a customer group retribution has been made.');
   res.status(501).json({
     code: 501,
@@ -32,7 +32,7 @@ const get = (req,res,next) => {
   });
 };
 
-const getAll = (req,res,next) => {
+const readAll = (req, res, next) => {
   logger.info('A Request to get all customer group retributions has been made.');
   res.status(501).json({
     code: 501,
@@ -41,9 +41,9 @@ const getAll = (req,res,next) => {
 };
 
 module.exports = {
-  add,
+  create,
   update,
   del,
-  get,
-  getAll,
+  read,
+  readAll,
 };

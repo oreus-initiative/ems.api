@@ -3,10 +3,10 @@ const db = require('knex')(require('../configs/database.configs')[process.env.NO
 const logger = require('../utils/logger');
 
 const testConnection = async () => {
-  logger.info('Testing Database Connection...');
+  logger.info('Testing database connection.');
   try {
     await db.raw('SELECT 1');
-    logger.info('Connection has been established successfully.');
+    logger.info('Database connected.');
     return true;
   } catch (e) {
     logger.error('Unable to connect to the database:', e);

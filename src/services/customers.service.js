@@ -1,17 +1,31 @@
-const add = (customer) => {};
+const db = require('../models');
+const ApiError = require('../utils/apiError');
+const { flattenSingleKeyObjectsArray } = require('../utils/result.utils');
+
+const create = (customer) => new Promise((resolve, reject) => {
+  db('customer')
+    .insert(customer)
+    .returning('id')
+    .then((result) => {
+      resolve(flattenSingleKeyObjectsArray('id', result));
+    })
+    .catch((err) => {
+      reject(ApiError.internal(err));
+    });
+});
 
 const update = (id, customer) => {};
 
 const del = (id) => {};
 
-const get = (id) => {};
+const read = (id) => {};
 
-const getAll = () => {};
+const readAll = () => {};
 
 module.exports = {
-  add,
+  create,
   update,
   del,
-  get,
-  getAll,
+  read,
+  readAll,
 };

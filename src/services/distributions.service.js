@@ -1,20 +1,20 @@
-const add = ({distribution}) => {};
+const create = ({distribution}) => {};
 
 const update = (id, distribution) => {};
 
 const del = (id) => {};
 
-const get = (id) => {};
+const read = (id) => {};
 
-const getAll = () => {};
+const readAll = () => {};
 
 const execute = (id) => {};
 
 module.exports = {
-  add,
+  create,
   update,
   del,
-  get,
-  getAll,
+  read,
+  readAll,
   execute,
 };

@@ -1,19 +1,19 @@
 const express = require('express');
 
 const {
-  add,
+  create,
   update,
   del,
-  get,
-  getAll,
+  read,
+  readAll,
 } = require('../controllers/customer_groups.controller');
 
 const router = express.Router();
 
-router.post('/', add);
+router.post('/', create);
 router.put('/:id', update);
 router.delete('/:id', del);
-router.get('/:id', get);
-router.get('/', getAll);
+router.get('/:id', read);
+router.get('/', readAll);
 
 module.exports = router;

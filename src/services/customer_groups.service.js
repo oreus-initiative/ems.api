@@ -1,23 +1,23 @@
-const add = (customer) => {};
+const create = (customer) => {};
 
 const update = (id, customer) => {};
 
 const del = (id) => {};
 
-const get = (id) => {};
+const read = (id) => {};
 
-const getAll = () => {};
+const readAll = () => {};
 
 const addCustomers = (groupId, customers) => {};
 
 const removeCustomers = (groupId, customers) => {};
 
 module.exports = {
-  add,
+  create,
   update,
   del,
-  get,
-  getAll,
+  read,
+  readAll,
   addCustomers,
   removeCustomers,
 };

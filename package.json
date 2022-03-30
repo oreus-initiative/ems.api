@@ -8,7 +8,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node index.js",
     "dev": "nodemon .",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env NODE_ENV=test && jest --watchAll --detectOpenHandles",
     "lint": "eslint --fix --ext .js,.jsx .",
     "generate-api-key": "npx run-func ./src/utils/generator.js generateApiKey"
   },
@@ -22,20 +22,24 @@
     "knex": "^1.0.1",
     "pg": "^8.7.1",
     "pug": "^3.0.2",
-    "winston": "^3.5.0"
+    "winston": "^3.5.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.12",
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
+    "cross-env": "^7.0.3",
     "eslint": "^8.7.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "husky": "^7.0.4",
+    "jest": "^27.5.1",
     "lint-staged": "^12.3.2",
     "nodemon": "^2.0.15",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "supertest": "^6.2.2"
   },
   "repository": {
     "type": "git",

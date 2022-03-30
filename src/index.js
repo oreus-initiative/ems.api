@@ -33,11 +33,13 @@ app.get('/', (req, res) => {
 });
 
 // Start the Express server
-app.listen(port, (server) => {
-  logger.info(`Split API '${process.env.NODE_ENV}' Server Started : http://localhost:${port}.`);
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, (server) => {
+    logger.info(`Split API '${process.env.NODE_ENV}' server started : http://localhost:${port}.`);
 
-  // Setup DB, close service if fails to connect.
-  if (!testConnection()) {
-    server.close();
-  }
-});
+    // Setup DB, close service if fails to connect.
+    if (!testConnection()) {
+      server.close();
+    }
+  });
+}

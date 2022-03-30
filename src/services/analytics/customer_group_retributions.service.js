@@ -1,17 +1,17 @@
-const add = ({cgRetributions}) => {};
+const create = ({cgRetributions}) => {};
 
 const update = (id, cgRetributions) => {};
 
 const del = (id) => {};
 
-const get = (id) => {};
+const read = (id) => {};
 
-const getAll = () => {};
+const readAll = () => {};
 
 module.exports = {
-  add,
+  create,
   update,
   del,
-  get,
-  getAll,
+  read,
+  readAll,
 };

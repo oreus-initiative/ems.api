@@ -8,6 +8,10 @@ const crypto = require('crypto');
  * @returns string of X random digits
  */
 const generateRandomDigitString = (length) => {
+  if (Number.isNaN(parseInt(length, 10))) {
+    throw new Error('Length must be a valid integer.');
+  }
+
   let str = '';
   for (let i = 0; i < length; i += 1) {
     const digit = Math.random();
@@ -21,6 +25,9 @@ const generateRandomDigitString = (length) => {
 };
 
 const generateApiKey = (length = 32) => {
+  if (Number.isNaN(parseInt(length, 10))) {
+    throw new Error('Length must be a valid integer.');
+  }
   const rand = crypto.randomBytes(length);
   const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   let key = '';

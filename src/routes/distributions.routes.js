@@ -1,21 +1,21 @@
 const express = require('express');
 
 const {
-  add,
+  create,
   update,
   del,
-  get,
-  getAll,
+  read,
+  readAll,
   execute,
 } = require('../controllers/distributions.controller');
 
 const router = express.Router();
 
-router.post('/', add);
+router.post('/', create);
 router.put('/:id', update);
 router.delete('/:id', del);
-router.get('/:id', get);
-router.get('/', getAll);
+router.get('/:id', read);
+router.get('/', readAll);
 router.get('/:id', execute);
 
 module.exports = router;
